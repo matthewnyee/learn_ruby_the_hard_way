@@ -49,4 +49,10 @@ class TestLexicon < Test::Unit::TestCase
            ['noun', 'princess']])
   end
 
+  def test_capitalization()
+    assert_equal(Lexicon.scan('Bear'), [['noun', 'bear']])
+    result = Lexicon.scan("BEAR princeSS")
+    assert_equal(result, [['noun', 'bear'],
+           ['noun', 'princess']])
+  end
 end

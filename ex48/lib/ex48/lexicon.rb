@@ -13,19 +13,19 @@ class Lexicon
 
   def self.scan(input_str)
     output = []
-    input_str.split.each do |word|
-      if Lexicon.integer?(word)
-        output << ['number', word.to_i]
-      elsif TYPE[0].include?(word)
-        output << ['direction', word]
-      elsif TYPE[1].include?(word)
-        output << ['verb', word]
-      elsif TYPE[2].include?(word)
-        output << ['stop', word]
-      elsif TYPE[3].include?(word)
-        output << ['noun', word]
+    input_str.split.each do |str|
+      if Lexicon.integer?(str)
+        output << ['number', str.to_i]
+      elsif TYPE[0].include?(str.downcase)
+        output << ['direction', str.downcase]
+      elsif TYPE[1].include?(str.downcase)
+        output << ['verb', str.downcase]
+      elsif TYPE[2].include?(str.downcase)
+        output << ['stop', str.downcase]
+      elsif TYPE[3].include?(str.downcase)
+        output << ['noun', str.downcase]
       else
-        output << ['error', word]
+        output << ['error', str]
       end
     end
 
